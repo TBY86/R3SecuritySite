@@ -98,6 +98,42 @@ if (heroLine) {
     animateHeroLine();
 }
 
+/* =============================
+   Sticky Contact Button Smooth Fade (JS Only)
+   ============================= */
+const contactBtn = document.getElementById('contactBtn');
+const heroSection = document.getElementById('hero');
+
+if (contactBtn && heroSection) {
+    let targetOpacity = 0;  // start hidden
+    let currentOpacity = 0; // start hidden
+    const fadeSpeed = 0.02; // smaller = slower fade
+
+    contactBtn.style.opacity = '0';
+    contactBtn.style.pointerEvents = 'none';
+    contactBtn.style.transition = 'none';
+
+    function updateOpacity() {
+        currentOpacity += (targetOpacity - currentOpacity) * fadeSpeed;
+        contactBtn.style.opacity = currentOpacity;
+        contactBtn.style.pointerEvents = currentOpacity < 0.05 ? 'none' : 'auto';
+        requestAnimationFrame(updateOpacity);
+    }
+
+    function checkHeroVisibility() {
+        const heroBottom = heroSection.getBoundingClientRect().bottom;
+        // Only fade in if hero is completely scrolled out
+        targetOpacity = heroBottom <= 0 ? 1 : 0;
+    }
+
+    updateOpacity();
+    window.addEventListener('scroll', checkHeroVisibility);
+    window.addEventListener('resize', checkHeroVisibility);
+    // Initial check on load
+    checkHeroVisibility();
+}
+
+
 
     /* =============================
        Report Cards Hover Animation
