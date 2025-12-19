@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RevSec - Bridging the gap between vulnerability and security through community-focused penetration testing services">
+    <title>RevSec | Offensive Security & Penetration Testing</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <!-- Sticky Header Navigation -->
+    <header class="stickyHeader" id="mainHeader">
+        <div class="container">
+            <div class="logoContainer">
+                <a href="#hero" class="logoLink">
+                    <span class="logoText">RevSec</span>
+                </a>
+            </div>
+            <nav class="mainNav">
+                <ul class="navList">
+                    <li class="navItem"><a href="#hero" class="navLink">Home</a></li>
+                    <li class="navItem"><a href="#reports" class="navLink">Reports</a></li>
+                    <li class="navItem"><a href="#services" class="navLink">Services</a></li>
+                    <li class="navItem"><a href="#careers" class="navLink">Careers</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="heroSection" id="hero">
+        <div class="container">
+            <div class="heroContent">
+                <div class="heroLogo">
+                    <h1 class="logoDisplay">
+                        <span class="logoRev">Rev</span><span class="logoSec">Sec</span>
+                    </h1>
+                </div>
+                <p class="heroTagline">Bridging the gap between vulnerability and security</p>
+                <div class="heroActions">
+                    <button class="btnPrimary" id="heroCta">Request Penetration Test</button>
+                    <a href="#reports" class="btnSecondary">View Reports</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 1: Executive Reports -->
+    <section class="reportsSection" id="reports">
+        <div class="container">
+            <div class="sectionHeader">
+                <h2 class="sectionTitle">Executive Security Reports</h2>
+                <p class="sectionSubtitle">
+                    Discovered vulnerabilities through our YouTube demonstrations? 
+                    Access comprehensive executive summaries and remediation guides for your lab environment.
+                </p>
+            </div>
+            <div class="reportsGrid" id="reportsGrid">
+                <!-- Report cards will be dynamically inserted here -->
+                <div class="reportCard">
+                    <div class="reportIcon">
+                        <svg class="iconSvg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="reportTitle">Sample Vulnerability Report</h3>
+                    <p class="reportDesc">Comprehensive analysis and remediation strategy</p>
+                    <button class="btnReport">Add to Cart - $49</button>
+                </div>
+                <!-- Additional report cards will be added via JS -->
+            </div>
+            <div class="reportsNote">
+                <p>All reports include detailed vulnerability analysis, risk assessment, and step-by-step remediation guidance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Services -->
+    <section class="servicesSection" id="services">
+        <div class="container">
+            <div class="sectionHeader">
+                <h2 class="sectionTitle">Mission-Driven Security Services</h2>
+                <p class="sectionIntro">
+                    Threat actors exploit the widening security gap daily, escalating insurance premiums, 
+                    exfiltrating sensitive data, and compromising critical infrastructure. As a for-profit 
+                    cybersecurity organization with a community service mandate, we deliver offensive security 
+                    services across all sectors while strengthening the security workforce.
+                </p>
+            </div>
+
+            <div class="servicesGrid">
+                
+                <!-- Cybersecurity Industry Service -->
+                <div class="serviceCard">
+                    <div class="serviceHeader">
+                        <div class="serviceIcon">
+                            <svg class="iconSvg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <h3 class="serviceTitle">Cybersecurity Workforce Development</h3>
+                    </div>
+                    <div class="serviceContent">
+                        <p class="serviceDescription">
+                            The cybersecurity industry faces a critical skills shortage at intermediate and advanced levels, 
+                            while entry-level talent pools continue expanding. Our mentor-driven hierarchy bridges this gap 
+                            through structured knowledge transfer programs.
+                        </p>
+                        <ul class="serviceFeatures">
+                            <li class="featureItem">
+                                <strong>Hands-On Experience:</strong> Junior analysts gain real-world penetration testing 
+                                exposure under senior guidance
+                            </li>
+                            <li class="featureItem">
+                                <strong>Industry Network Building:</strong> Mentees develop trusted relationships with 
+                                seasoned security professionals
+                            </li>
+                            <li class="featureItem">
+                                <strong>Skill Acceleration:</strong> Structured progression from foundational to advanced 
+                                offensive security techniques
+                            </li>
+                            <li class="featureItem">
+                                <strong>Career Readiness:</strong> Graduates enter the workforce with demonstrable skills 
+                                and industry connections
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- All Industries Service -->
+                <div class="serviceCard">
+                    <div class="serviceHeader">
+                        <div class="serviceIcon">
+                            <svg class="iconSvg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="serviceTitle">Enterprise Penetration Testing Services</h3>
+                    </div>
+                    <div class="serviceContent">
+                        <p class="serviceDescription">
+                            Our hybrid assessment model combines veteran expertise with emerging talent perspectives, 
+                            delivering comprehensive security validation from multiple threat actor profiles. 
+                            Services span web applications, cloud infrastructure, AI systems, and Windows/Linux environments.
+                        </p>
+                        <ul class="serviceFeatures">
+                            <li class="featureItem">
+                                <strong>Multi-Perspective Testing:</strong> Seasoned consultants paired with junior analysts 
+                                ensure both depth and novel attack vectors
+                            </li>
+                            <li class="featureItem">
+                                <strong>Emerging Technology Coverage:</strong> Junior team members maintain awareness of 
+                                cutting-edge exploits and modern frameworks
+                            </li>
+                            <li class="featureItem">
+                                <strong>Deep Technical Expertise:</strong> Senior engineers provide advanced knowledge across 
+                                web, cloud, AI/ML, Linux, and Windows attack surfaces
+                            </li>
+                            <li class="featureItem">
+                                <strong>Community Service Program:</strong> Qualifying organizations may receive pro-bono 
+                                assessments ($10,000-$15,000 value)
+                            </li>
+                            <li class="featureItem">
+                                <strong>Enterprise-Grade Deliverables:</strong> Comprehensive reports with executive summaries, 
+                                technical findings, and remediation roadmaps
+                            </li>
+                        </ul>
+                        <div class="serviceNote">
+                            <p>
+                                <strong>Pro-Bono Eligibility:</strong> If penetration testing services exceed current budget 
+                                constraints, submit an application for our volunteer assessment program. Selected organizations 
+                                receive full-scope security assessments with actionable remediation guidance.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Careers -->
+    <section class="careersSection" id="careers">
+        <div class="container">
+            <div class="sectionHeader">
+                <h2 class="sectionTitle">Join Our Team</h2>
+                <p class="sectionSubtitle">
+                    Build your career in offensive security through paid positions or volunteer opportunities
+                </p>
+            </div>
+
+            <div class="careersGrid">
+                
+                <!-- Employment Opportunities -->
+                <div class="careerCard">
+                    <div class="careerIcon">
+                        <svg class="iconSvg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                    </div>
+                    <h3 class="careerTitle">Employment Opportunities</h3>
+                    <p class="careerDescription">
+                        We're seeking passionate security professionals at all experience levels. Our competitive 
+                        compensation packages include mentorship programs, professional development, and hands-on 
+                        experience with diverse client environments.
+                    </p>
+                    <ul class="careerBenefits">
+                        <li>Competitive salary and benefits</li>
+                        <li>Structured mentorship programs</li>
+                        <li>Professional certification support</li>
+                        <li>Diverse project exposure</li>
+                        <li>Remote-friendly culture</li>
+                    </ul>
+                    <button class="btnCareer" data-career-type="employment">Submit Resume</button>
+                </div>
+
+                <!-- Volunteer Opportunities -->
+                <div class="careerCard">
+                    <div class="careerIcon">
+                        <svg class="iconSvg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="careerTitle">Volunteer Program</h3>
+                    <p class="careerDescription">
+                        Gain real-world penetration testing experience while contributing to community security. 
+                        Our volunteer program provides mentorship, portfolio-building opportunities, and direct 
+                        exposure to enterprise security assessments.
+                    </p>
+                    <ul class="careerBenefits">
+                        <li>Mentorship from senior consultants</li>
+                        <li>Real-world pentest experience</li>
+                        <li>Portfolio development</li>
+                        <li>Industry networking</li>
+                        <li>Flexible time commitment</li>
+                    </ul>
+                    <button class="btnCareer" data-career-type="volunteer">Apply as Volunteer</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footerContent">
+                <div class="footerBrand">
+                    <h3 class="footerLogo">RevSec</h3>
+                    <p class="footerTagline">Bridging the gap between vulnerability and security</p>
+                </div>
+                <div class="footerLinks">
+                    <h4 class="footerHeading">Quick Links</h4>
+                    <ul class="footerList">
+                        <li><a href="#hero" class="footerLink">Home</a></li>
+                        <li><a href="#reports" class="footerLink">Reports</a></li>
+                        <li><a href="#services" class="footerLink">Services</a></li>
+                        <li><a href="#careers" class="footerLink">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footerSocial">
+                    <h4 class="footerHeading">Connect With Us</h4>
+                    <div class="socialLinks">
+                        <a href="https://youtube.com/@revsec" target="_blank" rel="noopener noreferrer" class="socialLink" aria-label="YouTube">
+                            <svg class="socialIcon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="socialLink socialLinkDisabled" aria-label="Blog (Coming Soon)">
+                            <svg class="socialIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="socialLink socialLinkDisabled" aria-label="GitHub (Coming Soon)">
+                            <svg class="socialIcon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footerBottom">
+                <p class="copyright">&copy; 2024 RevSec. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Button (Sticky Bottom Left) -->
+    <button class="contactButton" id="contactBtn">
+        <svg class="contactIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <span class="contactText">Request Pentest</span>
+    </button>
+
+    <!-- Modal: Career Application -->
+    <div class="modal" id="careerModal">
+        <div class="modalOverlay" id="careerModalOverlay"></div>
+        <div class="modalContent">
+            <div class="modalHeader">
+                <h3 class="modalTitle" id="careerModalTitle">Submit Your Application</h3>
+                <button class="modalClose" id="careerModalClose">&times;</button>
+            </div>
+            <form class="form" id="careerForm">
+                <div class="formGroup">
+                    <label for="careerName" class="formLabel">Full Name *</label>
+                    <input type="text" id="careerName" name="name" class="formInput" required>
+                </div>
+                <div class="formGroup">
+                    <label for="careerEmail" class="formLabel">Email Address *</label>
+                    <input type="email" id="careerEmail" name="email" class="formInput" required>
+                </div>
+                <div class="formGroup">
+                    <label for="careerPhone" class="formLabel">Phone Number</label>
+                    <input type="tel" id="careerPhone" name="phone" class="formInput">
+                </div>
+                <div class="formGroup">
+                    <label for="careerResume" class="formLabel">Resume / CV *</label>
+                    <input type="file" id="careerResume" name="resume" class="formInput" accept=".pdf,.doc,.docx" required>
+                </div>
+                <div class="formGroup">
+                    <label for="careerMessage" class="formLabel">Cover Letter / Additional Information</label>
+                    <textarea id="careerMessage" name="message" class="formTextarea" rows="5"></textarea>
+                </div>
+                <button type="submit" class="btnSubmit">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Contact / Pentest Request -->
+    <div class="modal" id="contactModal">
+        <div class="modalOverlay" id="contactModalOverlay"></div>
+        <div class="modalContent">
+            <div class="modalHeader">
+                <h3 class="modalTitle">Request Penetration Test</h3>
+                <button class="modalClose" id="contactModalClose">&times;</button>
+            </div>
+            <form class="form" id="contactForm">
+                <div class="formGroup">
+                    <label for="contactName" class="formLabel">Full Name *</label>
+                    <input type="text" id="contactName" name="name" class="formInput" required>
+                </div>
+                <div class="formGroup">
+                    <label for="contactEmail" class="formLabel">Email Address *</label>
+                    <input type="email" id="contactEmail" name="email" class="formInput" required>
+                </div>
+                <div class="formGroup">
+                    <label for="contactCompany" class="formLabel">Company / Organization *</label>
+                    <input type="text" id="contactCompany" name="company" class="formInput" required>
+                </div>
+                <div class="formGroup">
+                    <label for="contactPhone" class="formLabel">Phone Number</label>
+                    <input type="tel" id="contactPhone" name="phone" class="formInput">
+                </div>
+                <div class="formGroup">
+                    <label for="contactService" class="formLabel">Service Type *</label>
+                    <select id="contactService" name="service" class="formSelect" required>
+                        <option value="">Select a service</option>
+                        <option value="web">Web Application Testing</option>
+                        <option value="cloud">Cloud Infrastructure Testing</option>
+                        <option value="network">Network Penetration Testing</option>
+                        <option value="ai">AI/ML Security Assessment</option>
+                        <option value="windows">Windows Environment Testing</option>
+                        <option value="linux">Linux Environment Testing</option>
+                        <option value="probono">Pro-Bono Program Application</option>
+                    </select>
+                </div>
+                <div class="formGroup">
+                    <label for="contactMessage" class="formLabel">Project Details *</label>
+                    <textarea id="contactMessage" name="message" class="formTextarea" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btnSubmit">Submit Request</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
