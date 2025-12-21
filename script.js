@@ -71,42 +71,44 @@ if (heroLine && heroTop && heroBottom) {
 }
 
 /* =============================
-   Hero Line Shimmer & Pulse (JS)
+   Hero Line Shimmer & Pulse (JS) - Right to Left (INTENSE & FIXED)
    ============================= */
 if (heroLine) {
-    let shimmerPos = 0;
-    let isLineGrowing = true;
-    let lineGrowthFinished = false;
+    let shimmerPos = 0; // position of the shimmer/glow effect
+    let pulseDirection = 1; // 1 = increasing brightness, -1 = decreasing
+    let pulseOpacity = 0.6; // starting glow intensity
+    let glowPosition = 100; // Start at right edge (100%)
     
-    // Stop initial glow when line finishes growing
-    heroLine.addEventListener('transitionend', () => {
-        isLineGrowing = false;
-        lineGrowthFinished = true;
-        heroLine.style.boxShadow = 'none'; // Clear the glow completely
-        // Start traveling glow after brief pause
-        setTimeout(() => {
-            startTravelingGlow();
-        }, 500);
-    });
-    
-    // Initial glow animation during line growth
-    function animateInitialGlow() {
-        if (!isLineGrowing) {
-            return; // STOP - do not continue
-        }
-        
-        shimmerPos += 0.5;
+    // Animate shimmer horizontally from right to left
+    function animateHeroLine() {
+        // Update shimmer background position (moves left)
+        shimmerPos += 0.2; 
         if (shimmerPos > 100) shimmerPos = 0;
         heroLine.style.backgroundPosition = `${shimmerPos}% 50%`;
         
+        // Move the glow from right to left
+        glowPosition -= 0.5; 
+        if (glowPosition < -20) glowPosition = 100; 
+        
+        // Pulse glow intensity as it travels
+        pulseOpacity += 0.008 * pulseDirection; 
+        if (pulseOpacity >= 0.9) pulseDirection = -1; 
+        if (pulseOpacity <= 0.5) pulseDirection = 1; 
+        
+        // Create INTENSE traveling glow effect from right to left
+        // Using inset shadows that work with the line element
         heroLine.style.boxShadow = `
-            0 0 30px 15px rgba(0, 217, 163, 0.8),
-            0 0 50px 25px rgba(0, 102, 255, 0.5),
-            0 0 70px 35px rgba(0, 217, 163, 0.3)
+            0 0 40px 20px rgba(0, 217, 163, ${pulseOpacity}),
+            0 0 60px 30px rgba(0, 102, 255, ${pulseOpacity * 0.6}),
+            0 0 80px 40px rgba(0, 217, 163, ${pulseOpacity * 0.4}),
+            0 0 100px 50px rgba(0, 102, 255, ${pulseOpacity * 0.3})
         `;
         
-        requestAnimationFrame(animateInitialGlow);
+        requestAnimationFrame(animateHeroLine);
     }
+    
+    animateHeroLine();
+}
     
     // Traveling glow animation (separate function)
     function startTravelingGlow() {
@@ -254,6 +256,7 @@ if (contactBtn && heroSection) {
     });
 
 });
+
 
 
 
