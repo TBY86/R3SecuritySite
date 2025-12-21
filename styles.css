@@ -262,28 +262,28 @@ body {
 }
 .btnSubmit:hover { background: var(--color-trust-blue-dark); }
 
-/* Gumroad Button Styling */
-a.gumroad-button {
-    display: inline-block;
-    text-decoration: none;
-    text-align: center;
-    font-family: var(--font-primary);
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: var(--radius-md);
-    padding: 1rem 2rem;
-    background: linear-gradient(135deg, var(--color-trust-blue), var(--color-trust-blue-light), var(--color-accent-green));
+/* Gumroad Button Styling - Force Override */
+a.gumroad-button.btnReport {
+    display: inline-block !important;
+    text-decoration: none !important;
+    text-align: center !important;
+    font-family: var(--font-primary) !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    border-radius: var(--radius-md) !important;
+    padding: 1rem 2rem !important;
+    background: linear-gradient(135deg, var(--color-trust-blue), var(--color-trust-blue-light), var(--color-accent-green)) !important;
     color: var(--color-white) !important;
-    background-size: 300% 300%;
-    animation: gradientShift 3s ease infinite;
-    border: none;
-    box-shadow: 0 4px 16px rgba(0,102,255,0.3);
-    width: 100%;
+    background-size: 300% 300% !important;
+    animation: gradientShift 3s ease infinite !important;
+    border: none !important;
+    box-shadow: 0 4px 16px rgba(0,102,255,0.3) !important;
+    width: 100% !important;
 }
 
-a.gumroad-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(0,102,255,0.5);
+a.gumroad-button.btnReport:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 24px rgba(0,102,255,0.5) !important;
 }
 
 /* ===================================
@@ -400,5 +400,6 @@ a.gumroad-button:hover {
 }
 .contactIcon { width:24px; height:24px; }
 .contactText { font-weight: var(--font-weight-semibold); }
+
 
 
