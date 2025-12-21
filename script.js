@@ -2,6 +2,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Ensure page always starts at top on load
+    window.scrollTo(0, 0);
+
+
     /* =============================
        Utility function for smooth hover effect
        ============================= */
