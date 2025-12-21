@@ -95,7 +95,7 @@ if (heroLine) {
         heroLine.style.backgroundPosition = `${shimmerPos}% 50%`;
         
         glowPosition -= 0.5;
-        if (glowPosition < -50) glowPosition = 150;
+        if (glowPosition < -500) glowPosition = 500;
         
         pulseOpacity += 0.008 * pulseDirection;
         if (pulseOpacity >= 0.9) pulseDirection = -1;
@@ -103,15 +103,15 @@ if (heroLine) {
         
         let edgeFade = 1;
         if (glowPosition > 100) {
-            edgeFade = Math.max(0, (150 - glowPosition) / 50);
+            edgeFade = Math.max(0, (500 - glowPosition) / 50);
         } else if (glowPosition < 0) {
-            edgeFade = Math.max(0, (glowPosition + 50) / 50);
+            edgeFade = Math.max(0, (glowPosition + 500) / 50);
         }
         
         // ADDED: Reduce glow intensity after line finishes growing
         if (!isLineGrowing) {
             glowIntensity -= 0.01; // Gradually reduce
-            if (glowIntensity < 0.1) glowIntensity = 0.1; // Keep minimal glow
+            if (glowIntensity < 0.1) glowIntensity = 0.5; // Keep minimal glow
         }
         
         // CHANGED: Multiply by glowIntensity to reduce glow after animation
@@ -241,6 +241,7 @@ if (contactBtn && heroSection) {
     });
 
 });
+
 
 
 
