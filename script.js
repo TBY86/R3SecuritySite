@@ -41,30 +41,25 @@ document.addEventListener('DOMContentLoaded', () => {
 const heroLine = document.querySelector('.heroLine');
 const heroTop = document.querySelector('.heroTop');
 const heroBottom = document.querySelector('.heroActions');
-
 if (heroLine && heroTop && heroBottom) {
     // ===== STEP 1: SET INITIAL HIDDEN STATES =====
     heroLine.style.transform = 'scaleX(0)';
     heroLine.style.transformOrigin = 'center';
     heroLine.style.transition = 'transform 1s ease-out';
-
     heroTop.style.opacity = 0;
     heroTop.style.transform = 'translateY(-50px)';
-    
+   
     heroBottom.style.opacity = 0;
     heroBottom.style.transform = 'translateY(50px)';
-
     // ===== STEP 2: TRIGGER LINE ANIMATION AFTER DELAY =====
     setTimeout(() => {
         heroLine.style.transform = 'scaleX(1)';
     }, 2000); // CHANGED: Updated delay value
-
     // ===== STEP 3: WAIT FOR LINE TO FINISH, THEN ANIMATE CONTENT =====
     heroLine.addEventListener('transitionend', () => {
         heroTop.style.transition = 'all 0.8s ease-out';
         heroTop.style.opacity = 1;
         heroTop.style.transform = 'translateY(0)';
-
         setTimeout(() => {
             heroBottom.style.transition = 'all 0.8s ease-out';
             heroBottom.style.opacity = 1;
@@ -80,33 +75,58 @@ if (heroLine) {
     let shimmerPos = 0;
     let pulseDirection = 1;
     let pulseOpacity = 0.6;
-    let glowPosition = 150;
+    let glowPosition = 200;
     let isLineGrowing = true; // ADDED: Track if line is still growing
     let glowIntensity = 1; // ADDED: Multiplier for glow intensity
-    
+   
     // ADDED: Listen for when line finishes growing
     heroLine.addEventListener('transitionend', () => {
         isLineGrowing = false;
     });
-    
+   
     function animateHeroLine() {
         shimmerPos += 0.5;
         if (shimmerPos > 100) shimmerPos = 0;
         heroLine.style.backgroundPosition = `${shimmerPos}% 50%`;
-        
+       
         glowPosition -= 0.5;
-        if (glowPosition < -50) glowPosition = 150;
-        
+        if (glowPosition <= -200) {
+            glowPosition = 200;
+        }
+       
         pulseOpacity += 0.008 * pulseDirection;
         if (pulseOpacity >= 0.9) pulseDirection = -1;
         if (pulseOpacity <= 0.5) pulseDirection = 1;
-        
+       
         let edgeFade = 1;
         if (glowPosition > 100) {
-            edgeFade = Math.max(0, (150 - glowPosition) / 50);
-        } else if (glowPosition < 0) {
-            edgeFade = Math.max(0, (glowPosition + 50) / 50);
+            // Fade in from right (200 → 100)
+            edgeFade = (200 - glowPosition) / 100;
+        } else if (glowPosition < -100) {
+            // Fade out to left (-100 → -200)
+            edgeFade = (glowPosition + 200) / 100;
         }
+        edgeFade = Math.max(0, Math.min(1, edgeFade));
+       
+        // ADDED: Reduce glow intensity after line finishes growing
+        if (!isLineGrowing) {
+            glowIntensity -= 0.01; // Gradually reduce
+            if (glowIntensity < 0.1) glowIntensity = 0.1; // Keep minimal glow
+        }
+       
+        // CHANGED: Multiply by glowIntensity to reduce glow after animation
+        heroLine.style.boxShadow = `
+           0 0 ${40 * glowIntensity}px ${20 * glowIntensity}px rgba(0, 217, 163, ${pulseOpacity * edgeFade * glowIntensity}),
+            0 0 ${60 * glowIntensity}px ${30 * glowIntensity}px rgba(0, 102, 255, ${pulseOpacity * 0.6 * edgeFade * glowIntensity}),
+            0 0 ${80 * glowIntensity}px ${40 * glowIntensity}px rgba(0, 217, 163, ${pulseOpacity * 0.4 * edgeFade * glowIntensity}),
+            0 0 ${100 * glowIntensity}px ${50 * glowIntensity}px rgba(0, 102, 255, ${pulseOpacity * 0.3 * edgeFade * glowIntensity})
+        `;
+       
+        requestAnimationFrame(animateHeroLine);
+    }
+   
+    animateHeroLine();
+}
         
         // ADDED: Reduce glow intensity after line finishes growing
         if (!isLineGrowing) {
