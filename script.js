@@ -38,13 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
 /* =============================
    Hero Section Entrance Animation
    ============================= */
-// ADDED: Define variables at the top
 const heroLine = document.querySelector('.heroLine');
 const heroTop = document.querySelector('.heroTop');
 const heroBottom = document.querySelector('.heroActions');
 
 if (heroLine && heroTop && heroBottom) {
-    // ADDED: Set initial hidden states
     heroLine.style.transform = 'scaleX(0)';
     heroLine.style.transformOrigin = 'center';
     heroLine.style.transition = 'transform 1s ease-out';
@@ -55,12 +53,10 @@ if (heroLine && heroTop && heroBottom) {
     heroBottom.style.opacity = 0;
     heroBottom.style.transform = 'translateY(50px)';
 
-    // ADDED: Trigger line animation after delay
     setTimeout(() => {
         heroLine.style.transform = 'scaleX(1)';
     }, 2000);
 
-    // ADDED: Wait for line to finish, then animate content
     heroLine.addEventListener('transitionend', () => {
         heroTop.style.transition = 'all 0.8s ease-out';
         heroTop.style.opacity = 1;
@@ -79,33 +75,44 @@ if (heroLine && heroTop && heroBottom) {
    ============================= */
 if (heroLine) {
     let shimmerPos = 0;
-    let glowPosition = 119;
     let isLineGrowing = true;
-    let showTravelingGlow = false;
+    let lineGrowthFinished = false;
     
+    // Stop initial glow when line finishes growing
     heroLine.addEventListener('transitionend', () => {
         isLineGrowing = false;
-        showTravelingGlow = true;
-        heroLine.style.boxShadow = 'none'; // ADDED: Clear glow when line finishes
+        lineGrowthFinished = true;
+        heroLine.style.boxShadow = 'none'; // Clear the glow completely
+        // Start traveling glow after brief pause
+        setTimeout(() => {
+            startTravelingGlow();
+        }, 500);
     });
     
-    function animateHeroLine() {
-        // PHASE 1: ONLY during line growth
-        if (isLineGrowing) {
-            shimmerPos += 0.5;
-            if (shimmerPos > 100) shimmerPos = 0;
-            heroLine.style.backgroundPosition = `${shimmerPos}% 50%`;
-            
-            heroLine.style.boxShadow = `
-                0 0 30px 15px rgba(0, 217, 163, 0.8),
-                0 0 50px 25px rgba(0, 102, 255, 0.5),
-                0 0 70px 35px rgba(0, 217, 163, 0.3)
-            `;
-            
-            requestAnimationFrame(animateHeroLine); // CHANGED: Only continue if line is growing
+    // Initial glow animation during line growth
+    function animateInitialGlow() {
+        if (!isLineGrowing) {
+            return; // STOP - do not continue
         }
-        // PHASE 2: After line growth - traveling glow
-        else if (showTravelingGlow) {
+        
+        shimmerPos += 0.5;
+        if (shimmerPos > 100) shimmerPos = 0;
+        heroLine.style.backgroundPosition = `${shimmerPos}% 50%`;
+        
+        heroLine.style.boxShadow = `
+            0 0 30px 15px rgba(0, 217, 163, 0.8),
+            0 0 50px 25px rgba(0, 102, 255, 0.5),
+            0 0 70px 35px rgba(0, 217, 163, 0.3)
+        `;
+        
+        requestAnimationFrame(animateInitialGlow);
+    }
+    
+    // Traveling glow animation (separate function)
+    function startTravelingGlow() {
+        let glowPosition = 119;
+        
+        function animateTravelingGlow() {
             glowPosition -= 0.4;
             
             if (glowPosition < -25) {
@@ -126,11 +133,14 @@ if (heroLine) {
                 0 0 70px 35px rgba(0, 217, 163, ${glowOpacity * 0.3})
             `;
             
-            requestAnimationFrame(animateHeroLine); // Continue for traveling glow
+            requestAnimationFrame(animateTravelingGlow);
         }
+        
+        animateTravelingGlow();
     }
     
-    animateHeroLine();
+    // Start initial glow
+    animateInitialGlow();
 }
 
 /* =============================
@@ -244,6 +254,7 @@ if (contactBtn && heroSection) {
     });
 
 });
+
 
 
 
