@@ -79,56 +79,53 @@ if (heroLine && heroTop && heroBottom) {
    ============================= */
 if (heroLine) {
     let shimmerPos = 0;
-    let glowPosition = 119; // CHANGED: Start 19 units off right
+    let glowPosition = 119; // Start 19 units off right
     let isLineGrowing = true;
-    let hasFinishedGrowing = false;
+    let showTravelingGlow = false; // ADDED: Control when traveling glow appears
+    let glowIntensity = 1; // For initial glow during line growth
     
     heroLine.addEventListener('transitionend', () => {
         isLineGrowing = false;
-        setTimeout(() => {
-            hasFinishedGrowing = true;
-        }, 3000);
+        showTravelingGlow = true; // ADDED: Start traveling glow after line finishes
     });
     
     function animateHeroLine() {
-        if (hasFinishedGrowing) {
-            heroLine.style.boxShadow = 'none';
-            return;
-        }
-        
         shimmerPos += 0.5;
         if (shimmerPos > 100) shimmerPos = 0;
         heroLine.style.backgroundPosition = `${shimmerPos}% 50%`;
         
-        // Move glow from right to left
-        glowPosition -= 0.4;
-        
-        // CHANGED: Reset when 25 units off left (completely invisible)
-        if (glowPosition < -25) {
-            glowPosition = 119; // Reset to 19 units off right
-        }
-        
-        // Calculate glow visibility
-        let glowOpacity = 1;
-        
-        // Fade in on right side
-        if (glowPosition > 100) {
-            glowOpacity = 1 - ((glowPosition - 100) / 19); // CHANGED: Fade over 19 units
-        }
-        // Fade out on left side
-        else if (glowPosition < 0) {
-            glowOpacity = 1 - (Math.abs(glowPosition) / 25); // CHANGED: Fade over 25 units
-        }
-        
-        // Apply glow only during line growth
+        // PHASE 1: During line growth - show full glow around entire line
         if (isLineGrowing) {
+            heroLine.style.boxShadow = `
+                0 0 30px 15px rgba(0, 217, 163, 0.8),
+                0 0 50px 25px rgba(0, 102, 255, 0.5),
+                0 0 70px 35px rgba(0, 217, 163, 0.3)
+            `;
+        }
+        // PHASE 2: After line growth - show traveling green glow
+        else if (showTravelingGlow) {
+            // Move glow from right to left
+            glowPosition -= 0.4;
+            
+            // Reset when off left side
+            if (glowPosition < -25) {
+                glowPosition = 119;
+            }
+            
+            // Calculate glow visibility (fade in/out at edges)
+            let glowOpacity = 1;
+            
+            if (glowPosition > 100) {
+                glowOpacity = 1 - ((glowPosition - 100) / 19);
+            } else if (glowPosition < 0) {
+                glowOpacity = 1 - (Math.abs(glowPosition) / 25);
+            }
+            
             heroLine.style.boxShadow = `
                 0 0 30px 15px rgba(0, 217, 163, ${glowOpacity * 0.8}),
                 0 0 50px 25px rgba(0, 102, 255, ${glowOpacity * 0.5}),
                 0 0 70px 35px rgba(0, 217, 163, ${glowOpacity * 0.3})
             `;
-        } else {
-            heroLine.style.boxShadow = 'none';
         }
         
         requestAnimationFrame(animateHeroLine);
@@ -248,6 +245,7 @@ if (contactBtn && heroSection) {
     });
 
 });
+
 
 
 
