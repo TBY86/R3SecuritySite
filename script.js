@@ -82,7 +82,7 @@ if (heroLine) {
     // ADDED: Listen for when line finishes growing
     heroLine.addEventListener('transitionend', () => {
         isLineGrowing = false;
-    });
+    }, { once: true }); // Added { once: true } to prevent multiple triggers
    
     function animateHeroLine() {
         shimmerPos += 0.5;
@@ -125,26 +125,6 @@ if (heroLine) {
         requestAnimationFrame(animateHeroLine);
     }
    
-    animateHeroLine();
-}
-        
-        // ADDED: Reduce glow intensity after line finishes growing
-        if (!isLineGrowing) {
-            glowIntensity -= 0.01; // Gradually reduce
-            if (glowIntensity < 0.1) glowIntensity = 0.1; // Keep minimal glow
-        }
-        
-        // CHANGED: Multiply by glowIntensity to reduce glow after animation
-        heroLine.style.boxShadow = `
-           0 0 ${40 * glowIntensity}px ${20 * glowIntensity}px rgba(0, 217, 163, ${pulseOpacity * edgeFade * glowIntensity}),
-            0 0 ${60 * glowIntensity}px ${30 * glowIntensity}px rgba(0, 102, 255, ${pulseOpacity * 0.6 * edgeFade * glowIntensity}),
-            0 0 ${80 * glowIntensity}px ${40 * glowIntensity}px rgba(0, 217, 163, ${pulseOpacity * 0.4 * edgeFade * glowIntensity}),
-            0 0 ${100 * glowIntensity}px ${50 * glowIntensity}px rgba(0, 102, 255, ${pulseOpacity * 0.3 * edgeFade * glowIntensity})
-        `;
-        
-        requestAnimationFrame(animateHeroLine);
-    }
-    
     animateHeroLine();
 }
 
@@ -259,6 +239,7 @@ if (contactBtn && heroSection) {
     });
 
 });
+
 
 
 
