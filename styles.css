@@ -397,6 +397,7 @@ a.gumroad-button.btnReport:hover {
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
+    cursor: pointer;
 }
 .contactIcon { width:24px; height:24px; }
 .contactText { font-weight: var(--font-weight-semibold); }
@@ -528,6 +529,7 @@ a.gumroad-button.btnReport:hover {
         padding: var(--spacing-lg);
     }
 }
+
 
 
 
