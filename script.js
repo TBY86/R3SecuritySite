@@ -343,32 +343,28 @@ if (contactBtn && heroSection) {
             });
         }
 
-        // Form submissions
+// Form submissions
         const careerForm = document.getElementById('careerForm');
         const contactForm = document.getElementById('contactForm');
 
         if (careerForm) {
-            careerForm.addEventListener('submit', (e) => {
-                e.preventDefault();
+            careerForm.addEventListener('submit', () => {
                 alert('Thank you for your application! We will review it and get back to you soon.');
-                closeModal(careerModal);
-                e.target.reset();
+            });
+        }
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', () => {
+                alert('Thank you for your request! Our team will contact you within 24-48 hours.');
             });
         }
 
-        if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('Thank you for your request! Our team will contact you within 24-48 hours.');
-                closeModal(contactModal);
-                e.target.reset();
-            });
-        }
     } else {
         console.warn('Modal elements not found in the DOM');
     }
 
 });
+
 
 
 
