@@ -238,63 +238,87 @@ if (contactBtn && heroSection) {
         });
     });
 
-    /* =============================
+/* =============================
        Modal Functionality
        ============================= */
     const careerModal = document.getElementById('careerModal');
     const contactModal = document.getElementById('contactModal');
     const careerModalTitle = document.getElementById('careerModalTitle');
 
-    // Open career modal
-    document.querySelectorAll('.btnCareer').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const careerType = e.target.dataset.careerType;
-            if (careerType === 'employment') {
-                careerModalTitle.textContent = 'Submit Your Resume';
-            } else {
-                careerModalTitle.textContent = 'Apply as Volunteer';
-            }
-            careerModal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
+    // Check if modals exist before setting up functionality
+    if (careerModal && contactModal && careerModalTitle) {
+        
+        // Open career modal
+        document.querySelectorAll('.btnCareer').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const careerType = e.target.dataset.careerType;
+                if (careerType === 'employment') {
+                    careerModalTitle.textContent = 'Submit Your Resume';
+                } else {
+                    careerModalTitle.textContent = 'Apply as Volunteer';
+                }
+                careerModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
         });
-    });
 
-    // Open contact modal
-    const openContactModal = () => {
-        contactModal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    };
+        // Open contact modal
+        const openContactModal = (e) => {
+            e.preventDefault();
+            contactModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        };
 
-    document.getElementById('heroCta')?.addEventListener('click', openContactModal);
-    document.getElementById('contactBtn')?.addEventListener('click', openContactModal);
+        const heroCta = document.getElementById('heroCta');
+        const contactBtn = document.getElementById('contactBtn');
+        
+        if (heroCta) heroCta.addEventListener('click', openContactModal);
+        if (contactBtn) contactBtn.addEventListener('click', openContactModal);
 
-    // Close modals
-    const closeModal = (modal) => {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    };
+        // Close modals
+        const closeModal = (modal) => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        };
 
-    document.getElementById('careerModalClose')?.addEventListener('click', () => closeModal(careerModal));
-    document.getElementById('careerModalOverlay')?.addEventListener('click', () => closeModal(careerModal));
-    document.getElementById('contactModalClose')?.addEventListener('click', () => closeModal(contactModal));
-    document.getElementById('contactModalOverlay')?.addEventListener('click', () => closeModal(contactModal));
+        const careerModalClose = document.getElementById('careerModalClose');
+        const careerModalOverlay = document.getElementById('careerModalOverlay');
+        const contactModalClose = document.getElementById('contactModalClose');
+        const contactModalOverlay = document.getElementById('contactModalOverlay');
 
-    // Form submissions
-    document.getElementById('careerForm')?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Thank you for your application! We will review it and get back to you soon.');
-        closeModal(careerModal);
-        e.target.reset();
-    });
+        if (careerModalClose) careerModalClose.addEventListener('click', () => closeModal(careerModal));
+        if (careerModalOverlay) careerModalOverlay.addEventListener('click', () => closeModal(careerModal));
+        if (contactModalClose) contactModalClose.addEventListener('click', () => closeModal(contactModal));
+        if (contactModalOverlay) contactModalOverlay.addEventListener('click', () => closeModal(contactModal));
 
-    document.getElementById('contactForm')?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Thank you for your request! Our team will contact you within 24-48 hours.');
-        closeModal(contactModal);
-        e.target.reset();
-    });
+        // Form submissions
+        const careerForm = document.getElementById('careerForm');
+        const contactForm = document.getElementById('contactForm');
+
+        if (careerForm) {
+            careerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your application! We will review it and get back to you soon.');
+                closeModal(careerModal);
+                e.target.reset();
+            });
+        }
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your request! Our team will contact you within 24-48 hours.');
+                closeModal(contactModal);
+                e.target.reset();
+            });
+        }
+    } else {
+        console.warn('Modal elements not found in the DOM');
+    }
 
 });
+
 
 
 
