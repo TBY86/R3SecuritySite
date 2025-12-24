@@ -202,7 +202,7 @@ if (contactBtn && heroSection) {
     /* =============================
        Buttons Hover Animation
        ============================= */
-    document.querySelectorAll('.btnPrimary, .btnSecondary, .btnReport, .btnCareer, .btnSubmit').forEach(btn => {
+    document.querySelectorAll('.btnPrimary, .btnSecondary, .btnReport, .btnCareer, .btnSubmit, .contactButton').forEach(btn => {
         addHoverEffect(btn, {
             hoverStyles: {
                 transform: 'scale(1.05)',
@@ -318,6 +318,7 @@ if (contactBtn && heroSection) {
     }
 
 });
+
 
 
 
