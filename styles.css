@@ -352,34 +352,143 @@ a.gumroad-button.btnReport:hover {
     display: flex;
     flex-direction: column;
 }
-.careerTitle { font-size:1.75rem; font-weight: var(--font-weight-bold); color: var(--color-white); margin-bottom: var(--spacing-md); }
-.careerDescription, .careerBenefits { flex: 1 1 auto; color: var(--color-gray-light); line-height: 1.8; margin-bottom: var(--spacing-lg); }
-.careerBenefits { list-style:none; }
-.careerBenefits li { padding: var(--spacing-sm) 0 var(--spacing-sm) 0 var(--spacing-lg); position:relative; }
-.careerBenefits li::before { content:'✓'; position:absolute; left:0; color: var(--color-trust-blue); font-weight: var(--font-weight-bold); font-size:1.2rem; }
+.careerTitle { 
+   font-size:1.75rem; 
+   font-weight: var(--font-weight-bold); 
+   color: var(--color-white); 
+   margin-bottom: var(--spacing-md); 
+}
+
+.careerDescription, 
+.careerBenefits {
+   flex: 1 1 auto; 
+   color: var(--color-gray-light); 
+   line-height: 1.8; 
+   margin-bottom: var(--spacing-lg); 
+}
+
+.careerBenefits {
+   list-style:none; 
+}
+
+.careerBenefits li {
+   padding: var(--spacing-sm) 0 var(--spacing-sm) var(--spacing-lg); 
+   position: relative; 
+}
+
+.careerBenefits li::before {
+   content:'✓'; 
+   position:absolute; 
+   left:0; 
+   color: var(--color-trust-blue); 
+   font-weight: var(--font-weight-bold); 
+   font-size:1.2rem; 
+}
 
 /* Push button to bottom */
 .btnCareer { margin-top:auto; }
 
 /* Footer */
-.footer { background-color: var(--color-charcoal-dark); border-top:1px solid rgba(255,255,255,0.1); padding: var(--spacing-xxl) 0 var(--spacing-lg); }
-.footerContent { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: var(--spacing-xl); margin-bottom: var(--spacing-xl); }
-.footerBrand { max-width:300px; }
-.footerLogo { font-size:1.75rem; font-weight: var(--font-weight-extrabold); color: var(--color-white); margin-bottom: var(--spacing-sm); }
-.footerTagline { color: var(--color-gray-medium); font-size:0.95rem; line-height:1.6; }
-.footerHeading { font-size:1.1rem; font-weight: var(--font-weight-semibold); color: var(--color-white); margin-bottom: var(--spacing-md); }
-.footerList { list-style:none; }
-.footerList li { margin-bottom: var(--spacing-sm); }
-.footerLink { color: var(--color-gray-medium); text-decoration:none; }
-.footerLink:hover { color: var(--color-trust-blue-light); }
-.socialLinks { display:flex; gap: var(--spacing-md); }
-.socialLink { width:40px; height:40px; border-radius: var(--radius-sm); background: var(--color-charcoal-medium); display:flex; align-items:center; justify-content:center; text-decoration:none; }
-.socialLink:hover { background: var(--color-trust-blue); }
-.socialLinkDisabled { opacity:0.4; cursor:not-allowed; }
-.socialLinkDisabled:hover { background: var(--color-charcoal-medium); }
-.socialIcon { width:20px; height:20px; color: var(--color-white); }
-.footerBottom { text-align:center; padding-top: var(--spacing-lg); border-top:1px solid rgba(255,255,255,0.1); }
-.copyright { color: var(--color-gray-dark); font-size:0.9rem; }
+
+.footer {
+    background-color: var(--color-charcoal-dark);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: var(--spacing-xxl) 0 var(--spacing-lg);
+}
+
+.footerContent {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.footerBrand {
+    max-width: 300px;
+}
+
+.footerLogo {
+    font-size: 1.75rem;
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-sm);
+}
+
+.footerTagline {
+    color: var(--color-gray-medium);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.footerHeading {
+    font-size: 1.1rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-md);
+}
+
+.footerList {
+    list-style: none;
+}
+
+.footerList li {
+    margin-bottom: var(--spacing-sm);
+}
+
+.footerLink {
+    color: var(--color-gray-medium);
+    text-decoration: none;
+}
+
+.footerLink:hover {
+    color: var(--color-trust-blue-light);
+}
+
+.socialLinks {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.socialLink {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: var(--color-charcoal-medium);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.socialLink:hover {
+    background: var(--color-trust-blue);
+}
+
+.socialLinkDisabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.socialLinkDisabled:hover {
+    background: var(--color-charcoal-medium);
+}
+
+.socialIcon {
+    width: 20px;
+    height: 20px;
+    color: var(--color-white);
+}
+
+.footerBottom {
+    text-align: center;
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright {
+    color: var(--color-gray-dark);
+    font-size: 0.9rem;
+}
 
 /* Contact Button */
 .contactButton {
@@ -529,6 +638,7 @@ a.gumroad-button.btnReport:hover {
         padding: var(--spacing-lg);
     }
 }
+
 
 
 
